@@ -15,13 +15,13 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  logIn(f){
+  async logIn(f){
     this.aFireAuth.signInWithEmailAndPassword(f['email'],f['pwd']).then(
       (res)=>{
         
         localStorage.setItem('mytoken',res.user['refreshToken']);
-        let userId=res.user['userId'];
-        this.router.navigateByUrl('home'+userId);
+        let userId=res.user['uid'];
+        this.router.navigateByUrl('home/'+userId);
       },
       (error)=>{
         console.error();
