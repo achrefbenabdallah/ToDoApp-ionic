@@ -25,3 +25,7 @@
 #container a {
   text-decoration: none;
 }
+
+ion-content.background{
+    --background: url(../../assets/todo.jpg) 0 0/100% 100% no-repeat;
+}
