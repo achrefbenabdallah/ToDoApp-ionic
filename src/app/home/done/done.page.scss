@@ -1,0 +1,26 @@
+ion-content.background{
+    --background: url(../../../assets/wallpaper.jpg) 0 0/100% 100% no-repeat;
+}
+
+h1 {
+    color: white;
+    margin-left: 20px;
+    font-size: 30px;
+}
+h5 {
+    color: #e8e8e8;
+    margin-left: 20px;
+    margin-top: -7px;
+    font-size: medium;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+}
+
+.add-button {
+    --background: #383a3e;
+    position: absolute;
+    bottom: 5px;
+    width: 96%;
+    --color: #ffffff;
+    margin-left: 2%;
+}

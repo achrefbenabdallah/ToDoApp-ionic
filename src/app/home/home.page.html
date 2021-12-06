@@ -1,16 +1,15 @@
-<ion-header [translucent]="true">
-  
-</ion-header>
-
 <ion-content class="background">
   <div >
     <ion-tabs>
       <ion-tab-bar slot="bottom">
+        <!--le router "tab" qui nous naviger vers le page to-do avec l'id de l'utilisateur-->
         <ion-tab-button tab="to-do/{{id}}">
           <ion-icon name="today-outline"></ion-icon>
           <ion-label>To Do</ion-label>
-          <ion-badge>{{nb}}</ion-badge>
+          <!--le badge qui spécifie le nombre des taches qui sont pas terminés-->
+          <ion-badge>{{nbr_tache}}</ion-badge>
         </ion-tab-button>
+        <!--le router "tab" qui nous naviger vers le page done avec l'id de l'utilisateur-->
         <ion-tab-button tab="done/{{id}}">
           <ion-icon name="checkmark-done-outline"></ion-icon>
           <ion-label>Done</ion-label>

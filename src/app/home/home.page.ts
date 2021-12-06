@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ActivatedRoute } from '@angular/router';
-
-
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -12,9 +9,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HomePage implements OnInit{
   id: string;
-  nb: number=0;
-  constructor(public angFireDb:AngularFireDatabase,private activatedRoute:ActivatedRoute,
-              private angAuth:AngularFireAuth) {}
+  //le variable de nbr des taches 
+  nbr_tache: number=0;
+  constructor(public afDdb:AngularFireDatabase,private activatedRoute:ActivatedRoute){}
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(
@@ -22,17 +19,18 @@ export class HomePage implements OnInit{
         this.id=p.get('id');
       }
     );
+    //appel de fonction getTasks() lors de l'initialisation de page pour afficher les taches qui est déja enregistrer
     this.getTasks();
   }
   getTasks(){
-    this.angFireDb.list('Tasks/').snapshotChanges(['child_added','child_moved']).subscribe(
+    this.afDdb.list('Tasks/').snapshotChanges(['child_added','child_moved']).subscribe(
       (reponse)=>{
         reponse.forEach(element=>{
+          //la fonction payload et exportval se sont des fonctions 
           if(element.payload.exportVal().userId==this.id && element.payload.exportVal().checked==false)
-          this.nb=this.nb+1;
+          this.nbr_tache=this.nbr_tache +1;
         })
       }
-    )
+    );
   }
-
 }

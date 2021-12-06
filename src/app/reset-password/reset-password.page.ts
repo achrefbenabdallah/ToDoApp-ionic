@@ -26,5 +26,9 @@ export class ResetPasswordPage implements OnInit {
       await alert.present();
     }); 
     }
+
+    login(){
+      this.router.navigateByUrl('/login')
+    }
     
 }

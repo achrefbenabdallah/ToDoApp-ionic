@@ -18,10 +18,9 @@ export class LoginPage implements OnInit {
   async logIn(f){
     this.aFireAuth.signInWithEmailAndPassword(f['email'],f['pwd']).then(
       (res)=>{
-        
         localStorage.setItem('mytoken',res.user['refreshToken']);
-        let userId=res.user['uid'];
-        this.router.navigateByUrl('home/'+userId);
+        let id=res.user['uid'];
+        this.router.navigateByUrl('home/'+id);
       },
       (error)=>{
         console.error();
@@ -34,6 +33,6 @@ export class LoginPage implements OnInit {
   }
 
   ResetPwd(){
-    this.router.navigateByUrl('/resetPwd');
+    this.router.navigateByUrl('/reset-password');
   }
 }
