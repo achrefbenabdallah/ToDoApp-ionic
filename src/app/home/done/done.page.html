@@ -9,8 +9,10 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="background">
+  <div class="ion-margin-horizontal">
   <h2>Today</h2>
   <h5>{{currentDate}}</h5>
+  </div>
   <ion-card *ngFor="let task of tasks">
       <ion-item lines="none">
         <ion-checkbox (ionChange)="changeCheckState(task)" [(ngModel)]="task.checked" color="success" slot="start"></ion-checkbox>
