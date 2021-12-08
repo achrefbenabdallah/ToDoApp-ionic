@@ -13,13 +13,14 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
   }
-
+    //fonction register a l aide de module Angular/Fire 'createUserWithEmailAndPassword()'
   register(f){
     this.angFireAuth.createUserWithEmailAndPassword(f['email'],f['password']).then(
       ()=>{this.router.navigateByUrl('home');},
       (error)=>{console.log(error);}
     )
   }
+  //fonction de navigation vers le route login
   login(){
     this.router.navigateByUrl('/login')
   }

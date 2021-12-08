@@ -13,7 +13,7 @@ export class ResetPasswordPage implements OnInit {
   constructor (private angFireAuth: AngularFireAuth, private router: Router,
     private alerCtrl: AlertController) { }
     ngOnInit() {}
-
+    //fonction resetPassword a l aide de module Angular/Fire 'sendPasswordResetEmail()'
     async resetPassword(f){
     this.angFireAuth.sendPasswordResetEmail(f['email']).then(
       async() => {
@@ -24,11 +24,11 @@ export class ResetPasswordPage implements OnInit {
         }}]
       });
       await alert.present();
-    }); 
+    });
     }
-
+   //fonction de navigation vers le route login
     login(){
       this.router.navigateByUrl('/login')
     }
-    
+
 }

@@ -27,11 +27,12 @@ export class DonePage implements OnInit {
     this.activatedRoute.paramMap.subscribe(
       (p)=>{
         this.id=p.get('id');
+        //fonction pour avoir les taches du firebase au cet utilisateur spécifier avec le variable id
         this.getTasks();
       }
     )
   }
-//fonction pour pusher une tache au liste des taches qui stocker dans le firebase 
+//fonction pour pusher une tache au liste des taches qui stocker dans le firebase
   addTask(){
     this.afDdb.list('Tasks/').push({
       userId : this.id,
@@ -57,6 +58,7 @@ export class DonePage implements OnInit {
           this.tasks.push({
             key:element.key,
             text:element.payload.exportVal().text,
+            //modifer la format de la date pour afficher juste l'heure
             date:element.payload.exportVal().date.substring(),
             checked : element.payload.exportVal().checked
           })
@@ -64,11 +66,11 @@ export class DonePage implements OnInit {
       }
     );
   }
-//fonction pour changer le status de taches quand on clique sur le checkbox 
+//fonction pour changer le status de taches quand on clique sur le checkbox
   changeCheckState(t){
     this.afDdb.object('Tasks/'+t.key+'/checked').set(t.checked);
   }
-  //fonction logout a l'aide de module angular/fire 
+  //fonction logout a l'aide de module angular/fire
   logout(){
     this.angAuth.signOut().then(
       ()=>{

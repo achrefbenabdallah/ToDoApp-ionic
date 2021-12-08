@@ -14,11 +14,12 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
   }
-
+//fonction login a l aide de module Angular/Fire 'signInWithEmailAndPassword()'
   async logIn(f){
     this.aFireAuth.signInWithEmailAndPassword(f['email'],f['pwd']).then(
       (res)=>{
         localStorage.setItem('mytoken',res.user['refreshToken']);
+        //variable id pour specifier l'utilisateur connecté
         let id=res.user['uid'];
         this.router.navigateByUrl('home/'+id);
       },
@@ -27,11 +28,11 @@ export class LoginPage implements OnInit {
       }
     )
   }
-
+  //fonction de navigation vers le route register
   Register(){
     this.router.navigateByUrl('/register');
   }
-
+  //fonction de navigation vers le route du password reset
   ResetPwd(){
     this.router.navigateByUrl('/reset-password');
   }

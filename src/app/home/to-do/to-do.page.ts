@@ -30,7 +30,7 @@ export class ToDoPage implements OnInit {
       }
     )
   }
-//fonction pour pusher une tache au liste des taches qui stocker dans le firebase 
+//fonction pour pusher une tache au liste des taches qui stocker dans le firebase
   addTask(){
     this.angFireDb.list('Tasks/').push({
       userId : this.id,
@@ -56,6 +56,7 @@ export class ToDoPage implements OnInit {
           this.tasks.push({
             key:element.key,
             text:element.payload.exportVal().text,
+            //modifer la format de la date pour afficher juste l'heure
             date:element.payload.exportVal().date.substring(11,16),
             checked : element.payload.exportVal().checked
           })
@@ -63,7 +64,7 @@ export class ToDoPage implements OnInit {
       }
     );
   }
-//fonction pour changer le status de taches quand on clique sur le checkbox 
+//fonction pour changer le status de taches quand on clique sur le checkbox
   changeCheckState(t){
     this.angFireDb.object('Tasks/'+t.key+'/checked/').set(t.checked);
   }
